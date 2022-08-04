@@ -224,6 +224,78 @@ text = 'szkoła zaczna się.'
 print(text.capitalize())
 
 
+# cw 21 Z adresu url: url = ('https://www.flynerd.pl/2018/12/darmowy-kurs-z-sieci-neuronowych)
+#       wytnij nazwę ścieżki po ostatnim znaku '/'. Następnie zamień wszystkie
+#       myślniki na spacje.
+# %%
+
+url = 'https://www.flynerd.pl/2018/12/darmowy-kurs-z-sieci-neuronowych'
+url1 = url.split('/')[-1]
+print(url1.replace('-',' '))
+
+
+# CW 22 Podano:text = '    Nasz nowy dom      ' usuń biale znaki. 
+#%%
+
+text = '    Nasz nowy dom      '
+print(text.strip())   
+
+
+# CW 23 Podano: text = 'xxx-ccc--dd-123' usuń myślniki 
+#%%
+
+text = 'xxx-ccc--dd-123'
+print(text.replace('-',''))
+
+
+# CW 24 Dane są nazwy : a = 'nowy.jpg' b = 'nowy.docx'
+#       sprawdź czy .jpg.   podaj wyniki za pomocą true i false
+# %% 
+
+a = 'nowy.jpg'
+b = 'nowy.docx'
+
+x = a.endswith('jpg')
+y = b.endswith('jpg')
+print(f'code1: {x}\ncode2: {y}')
+
+
+# CW 25 Podano:text = 'New Year' zamień wszystkie duże litery na małe. 
+#%%
+
+text = 'New Year'
+print(text.lower())  
+
+
+# CW 26 Podano:text = 'New Year' zamień wszystkie litery na duże 
+#%%
+
+text = 'New Year'
+print(text.upper())  
+
+
+# CW 27 Podano: text = 'New,York,City' Podziel tekst według przecinka 
+#       otrzymując listę. 
+# %%
+
+text = 'New,York,City'
+print(text.split(','))
+
+
+# Cw 28  Podano: num = 11  . Podaj jako numer 4 cyfrowy (0011)
+#%% 
+
+num = 11
+print(str(num).zfill(4))
+
+
+# CW 29 sprawdź czy dane:dane1 = 'Nowa Klasa-2a' dane2 = 'NowaKlasa2a'
+#       składają się tylko ze znaków alfanumerycznych 
+# %%
+
+dane1 = 'Nowa Klasa-2a'
+dane2 = 'NowaKlasa2a'
+print(f'dane1: {dane1.isalnum()}\ndane2: {dane2.isalnum()}')
 
 
 
