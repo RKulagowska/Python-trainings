@@ -298,6 +298,126 @@ dane2 = 'NowaKlasa2a'
 print(f'dane1: {dane1.isalnum()}\ndane2: {dane2.isalnum()}')
 
 
+# CW 30 Dla zmiennej sentence= „Kurs Pythona jest prosty i przyjemny.”, :
+#       Policz wszystkie znaki w napisie
+#       Nie modyfikując zmiennej sentence wyświetl słowo „prosty”
+#       Wyświetl znaki: 8,czwarty od końca
+#       Wprowadź do zdania 2 błędy ortograficzne 
+#%%
+
+sentence = 'Kurs Pythona jest prosty i przyjemny.'
+
+print(len(sentence))
+print(sentence[18:24])
+print(sentence[7])
+print(sentence[-4])
+
+x = sentence.replace('u','ó')
+print(x)
+
+
+# CW 31 Podano zbiory: A = {2, 4, 6, 8, 10, 12}, B = {4, 10, 20, 40}
+#       Wyznacz różnicę symetryczną zbiorów A i B. 
+#%%
+
+A = {2, 4, 6, 8, 10, 12} 
+B = {4, 10, 20, 40}
+x = A.symmetric_difference(B)
+
+print(f'Wynik końcowy: {x}')
+
+
+# CW 32 Podane są dwa zbiory X = {'1001', '1002', '1105'}, 
+#       Y = {'77002', '9704', '1105'}
+#       Podaj dane występujące w obu zbiorach 
+#%%
+
+x = {'1001', '1002', '1105'}
+y = {'77002', '9704', '1105'}
+z = x.intersection(y)
+print(f'W obu zbiorach występują dane : {z}')
+
+
+# CW 33 Tupla default = ('AA', 'A', 'AAA', 'A', 'AAA')
+#       zwróć liczbę wystąpień znaków 'AA'
+# %%
+
+X = ('AA', 'A', 'AAA', 'A', 'AAA')
+print(f"WYSTĘPUJE: {X.count('AA')}")
+
+
+# CW 34 Polącz 2 podane tuple 
+#%%
+
+nowy = ('1a', '7a', '8a')
+stary = ('1', '2', '3')
+
+dane = nowy + stary
+print(dane)
+
+
+# CW 35 Zagnieźdź te obiekty w jeden obiekt typu tuple
+#%% 
+nowy = ('1a', '7a', '8a')
+stary = ('1', '2', '3')
+
+dane = (nowy, stary)
+
+print(dane)
+
+
+# CW 36 Istnieje tupla members = (('Dom', 1), ('Dach', 3))
+#       Wstaw pomiędzy  krotkę ('Okno', 2) 
+#%%
+
+members = (('Dom', 1), ('Dach', 2))
+x1 = members[0], ('Okno', 3), members[1]
+
+print(x1)
+
+
+# CW 37 Powstała w cw 36 tuple : (('Dom', 1), ('Okno', 3), ('Dach', 2))
+#       Posortuj rosnąco  po drugim elemencie i alfabetycznie po pierwszym   
+#%%
+
+dane = (('Dom', 1), ('Okno', 3), ('Dach', 2))
+
+x = tuple(sorted(dane, key=lambda item: item[1]))
+y = tuple(sorted(dane))
+print(f'Rosnąco: {x}')
+print(f'Malejąco: {y}')
+
+
+# CW 38 podano: text = 'Happy New Year!.' Wykonaj kroki:
+#       Zamień wszystkie litery na małe.
+#       Usuń spacje iwykrzzyknik.
+#       Utwórz zbiór składający się z wszystkich liter w tak przetworzonym 
+#       tekście.
+#       usuń z tego zbioru litery 'e' i 'i' 
+#       Wydrukuj liczbę elementów pozostałych elementó 
+# %% 
+
+text = 'Happy New Year!.'
+x = {'a', 'i'}
+
+text = text.lower()
+text = text.replace(' ','')
+text = text.replace('!','')
+
+text1 = set(text)
+result = text1.difference(x)
+
+print(f' Pozostało: {len(result)} elementów.')
+
+
+# CW 39 Z podanej tupli wciąg NEW
+#%%
+
+stocks = (('OLD', ('NEW', 'zws')), ('land', ('mean', 'zzz')))
+
+x = stocks[0][1][0]
+print(x)
+
 
 
 
