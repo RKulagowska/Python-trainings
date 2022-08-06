@@ -419,5 +419,87 @@ x = stocks[0][1][0]
 print(x)
 
 
+# CW 40 porozdzielaj x = '1,2,3,4,5,6, y = 'python java php sql sas'
+#       z = '#gym#fit#mood'
+# %%
+
+x = '1,2,3,4,5,6'.split(',')
+y = 'python java php sql sas'.split()
+z = '#gym#fit#mood'.split('#')
+print(x)
+print(y)
+print(z)
+
+
+# CW 41  Dodaj 2 listy i wydrukuj a = [4, 5, 3, 3], b = [9, 7]
+# %%
+
+a = [4, 5, 3, 3]
+b = [9, 7]
+
+a.extend(b)
+print(a)
+
+
+# CW 42 Podany jest: text = 'Programowanie jest miłe i przyjemne'
+#       Zamień duże litery na małe, zastąp polskie znaki 
+#       Utwórz listę składającą się z unikalnych znaków w tekście. 
+#       Usuń spację z tej listy oraz posortuj od a do z. 
+#       Wydrukuj 10 pierwszych elementów tej listy.
+#%%
+
+text = 'Programowanie jest miłe i przyjemne'
+
+text = text.lower().replace('ł','l')
+x = list(set(text))
+x.remove(' ')
+x.sort()
+
+print(x[:10])
+
+
+# CW 43 Do listy: kolor = ['zielony', 'niebieski', 'biały'] dodaj 'granat'
+#%% 
+
+kolor  = ['zielony', 'niebieski', 'biały']
+kolor.append('granat')
+print(kolor)
+
+
+# Cw 44 Podana jest lista: New = ['02', '03', '18']
+#       Dodaj do tej listy  '01' na początku listy.
+#       Następnie usuń nazwę pliku '18'.
+#%%
+
+New = ['02', '03', '18']
+New.insert(0, '01')
+New.remove('18')
+print(New)
+
+
+# CW 45 Podana jest lista = ['New', 'York', 'City'] Połącz 
+#       elementy listy znakiem '@'. Dodaj # początku tekstu
+#%%
+
+lista = ['New', 'York', 'City']
+print('#' + '@'.join(lista))
+
+
+# CW 46 Posortuj tuple od z do a : a = ('C++', 'sql', 'java','python')
+#%%
+
+a = ('C++', 'sql', 'java','python')
+a = tuple(sorted(a))
+print(a)
+
+
+# CW 47 Podana jest lista = ['1', '2', '1', '3', '1']
+#       zlicz wystąpienia '1'. 
+#%%
+
+lista = ['1', '2', '1', '3', '1']
+print(f"Występuje: {lista.count('1')}")
+
+
 
 
