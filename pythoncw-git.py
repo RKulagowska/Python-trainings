@@ -501,5 +501,137 @@ lista = ['1', '2', '1', '3', '1']
 print(f"Występuje: {lista.count('1')}")
 
 
+# CW 48 do podanego słownika dodaj Litwa:Wilno, utwórz listę stolic 
+#       posotowaną od A do Z 
+#%%
+
+capitals = {'Polska': 'Warszawa', 'Ukraina': 'Kijów', 'Włochy': 'Rzym'}
+capitals['Litwa'] = 'Wilno'
+x = sorted(list(capitals.values()))
+print(x)
+
+
+# CW 49 Z podanego słownika wydrukuj wartosc '4'. Gdy klucz nie występuje w 
+#       słowniku zwróć wartość 'brak'    
+#%%
+
+dane = {'1': 'A', '2': 'B', '3': 'C'}
+x = dane.get('4', 'brak')
+print(x)
+
+
+# CW 50 Utwórz słownik z następujących par (klucz, wartość): 
+#       1, 'a'; 2, 'b'  ;3, 'c' 
+#%%
+
+new = {1:'a', 2:'b', 3:'c'}
+print(new)
+
+
+# CW 51 Podany jest słownik, wyciąg wszystkie klucze.
+#%%
+
+new = {1:'a', 2:'b', 3:'c'}
+print(new.keys())
+
+
+# CW 52 Podany jest słownik, wyciąg wszystkie wartosci.
+#%%
+
+new = {1:'a', 2:'b', 3:'c'}
+print(new.values())
+
+
+# CW 53 Podany jest słownik, wyciąg wartosci dla 3.     
+#%%
+
+new = {1:'a', 2:'b', 3:'c'}
+print(new[3])
+print(new.get(3))
+
+
+# CW 54 Podany jest słownik, wyciąg wszystkie wartosci klucze(tuple).     
+#%%
+
+new = {1:'a', 2:'b', 3:'c'}
+print(new.items())
+
+
+# CW 55 Podany jest słownik. Wydobądź cechę dla ten medium
+# %%
+items = {
+    1: {'small': 's'},
+    2: {'medium': 'm'},
+    3: {'large': 'l'}
+}
+print(items[2]['medium'])
+
+
+# CW 56 Podany jest słownik. Wydobądź wartosc klucza 1
+# %%
+items = {
+    1: {'small': 's'},
+    2: {'medium': 'm'},
+    3: {'large': 'l'}
+}
+print(items[1])
+
+
+# CW 57 Podany jest słownik. Wydobądź zmień ceche dla 'medium' na 'M'
+# %%
+items = {
+    1: {'small': 's'},
+    2: {'medium': 'm'},
+    3: {'large': 'l'}
+}
+items[2]['medium']= 'M'
+print(items[2])
+
+
+# CW 58 Podany jest słownik. dodaj: 4:{'super large':'xl'}
+# %%
+items = {
+    1: {'small': 's'},
+    2: {'medium': 'm'},
+    3: {'large': 'l'}
+}
+items['4'] = {'super large': 'xl'}
+print(items.values())
+
+
+# CW 59 Podany jest słownik. skasuj:  2: {'medium': 'm'},
+# %%
+items = {
+    1: {'small': 's'},
+    2: {'medium': 'm'},
+    3: {'large': 'l'}
+}
+items.pop(2)
+print(items)
+
+
+# CW 60 Podany jest słownik.Znajdź posortowaną od a do z listę unikalnych 
+#       wartości. 
+#%%
+
+items = {
+    1: 'small',
+    2: 'medium',
+    3: 'large',
+    4: 'medium',
+    5: 'large'
+}
+    
+x = list(set(items.values()))
+x.sort()
+print(x)
+
+
+# CW 61 Podana jest lista. Przekształć tę listę w słownik (indeks, ticker).       
+#%%
+
+lista = ['A', 'C', 'E', 'F', 'N','X', 'K', 'L', 'T', 'Z']
+
+print(dict(enumerate(lista)))
 
 
