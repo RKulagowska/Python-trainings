@@ -635,3 +635,108 @@ lista = ['A', 'C', 'E', 'F', 'N','X', 'K', 'L', 'T', 'Z']
 print(dict(enumerate(lista)))
 
 
+# CW 62 Podano hasło: x = 'mojehaslo!!!!' Sprawdź, czy ma odpowiednią długość
+#       min 10 znaków. Jeżeli tak, wydrukuj 'OK', w przeciwnym razie
+#       'Hasło zbyt krótkie'.
+#%%
+
+x = 'mojehaslo!!!!'
+if len(x) >= 11:
+    print('Hasło poprawne')
+else:
+    print('Hasło zbyt krótkie')
+
+  
+# CW 63 czy podany pliku: x = 'mojedane.xlsx'. jest z rozszerzeniem 'xlsx'. 
+#       Wydrukuj 'TAK' lub 'NIE'.
+# %% 
+
+x = 'mojedane.xlsx'
+
+if x.endswith('.xlsx'): 
+    print('TAK')
+else:
+    print('NIE')
+
+  
+# CW 64 Podano hasło: x = 'mojehaslo!!!!' Sprawdź, czy ma odpowiednią długość
+#       min 10 znaków oraz zwiera znak specjalny '!'. 
+#       Jeżeli tak, wydrukuj 'Hasło poprawne', w przeciwnym razie 'Hasło 
+#       niepoprawne'.
+#%%
+
+x = 'mojehaslo!!!!'
+if len(x) >= 11 and '!' in x:
+    print('Hasło poprawne')
+else:
+    print('Hasło zbyt krótkie')
+
+  
+# CW 65 Podany jest łańcuch znaków: x = 'DAAAGGTHTYYYY' Sprawdź czy Składa się
+#       tylko z dużych liter. Jeśli tak wydrukuj 'TAK'.
+#%%
+
+x = 'DAAAGGTHTYYYY'
+if x.capitalize():
+    print('TAK')
+
+  
+# CW 66 Podana jest zmienna:x = 22.0 Zbadaj czy to typ int. Wydrukuj 'TAK'
+#     lub 'NIE'.
+#%%
+
+x = 22.0
+if isinstance(x,int):
+   print('TAK')
+else:
+    print('NIE')
+
+
+# CW 67 Podana jest lista: x = ['02134', '24253']. Sprawdź 
+#       czy  y:  = '02135'występuje w liście x. Jeśli nie dodaj 
+#%%
+
+x = ['02134', '24253']
+z = '02135'
+
+if not z in x:
+    x.append(z)
+    print(x)
+    
+    
+# CW 68 Podany jest słownik: project_ids = {'01': 'open','02': 'new',
+#       '03': 'in progress','04': 'completed'}
+#       Wykorzystując instrukcję warunkową sprawdź, czy status projektu z 
+#       id = '02' jest ustawiony na 'new'. Jeśli tak, zmień ten status na 
+#       'open'.
+#%%
+project_ids = {
+    '01': 'open', 
+    '02': 'new',
+    '03': 'in progress',
+    '04': 'completed'
+}
+
+if project_ids['02'] == 'new':
+    project_ids['02'] = 'open'
+    print(project_ids)
+
+   
+# CW 69 Napisz program, który sprawdzi czy podany element: item = '001' 
+#       występuje w liście: items = ['001', '000', '003', '005', '006']
+#       Jeżeli tak, to usuń ten element z listy. Wydrukuj otrzymaną listę. 
+# %% 
+item = '001'
+items = ['001', '000', '003', '005', '006']
+
+if item =='001':
+    items.pop(0)
+    print(items)
+
+#%%
+if item in items:
+    items.remove(item)
+    
+print(items)
+
+
