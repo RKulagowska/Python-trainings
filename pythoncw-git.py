@@ -736,7 +736,120 @@ if item =='001':
 #%%
 if item in items:
     items.remove(item)
+ print(items)
+
+
+# CW 70  Napisz program, który z podanej listy zwróci listę wartości powyżej
+#        0.5:
+# %%
+
+data = [0.44, 0.51, 0.8, 0.57, 0.66, 0.12]
+new = []
+
+for i in data:
+    if i > 0.5:
+        new.append(i)
+print(new)
+
+
+# CW 71 Podana jest lista  = [1, 5, 3, 2, 2, 4, 2, 4]. Usuń duplikaty zachowaj 
+#       kolejność. wynik: [1, 5, 3, 2, 4]      
+# %% 
+
+lista = [1, 5, 3, 2, 2, 4, 2, 4]
+x = []
+for i in lista:
+    if not i in x:
+        x.append(i)
+print(x)
+
+
+# CW 72 Podana jest lista = [1, 3, 4, 5, 6, 9, 10, 17, 23, 24]
+#       Usuń liczby nieparzyste i zwróć pozostałe. 
+# %% 
     
-print(items)
+lista = [1, 16, 4, 5, 41, 9, 10, 56, 23, 24]
+x = []
+for i in lista:
+    if not i % 2 != 0:
+        x.append(i)
+print(x)
+
+
+# CW 73 Podany jest słownik> Kluczem jest 3-literowy kod spółki (ticker), 
+#       wartością cena zamknięcia.
+#       Przeprowadź iterację po słowniku. Wydrukuj kody (tickery) tych spółek, 
+#       których cena zamknięcia jest większa niż 100.00 PLN.
+#%%
+
+gaming = {
+    '11B': 362.5,
+    'CDR': 297.0,
+    'CIG': 0.85,
+    'PLW': 318.0,
+    'TEN': 300.0
+}
+for i,y in gaming.items():
+    if y > 100:
+        print(i)
+
+
+# CW 74 Znajdź wszystkie liczby dwucyfrowe podzielne przez 10 oraz 
+#       niepodzielne przez 3. Wynik wydrukuj w postaci wartości 
+#       rozdzielonych przecinkiem. 
+# %% 
+x = []
+for i in range(10,100):
+    if i % 10 == 0 and i % 3 != 0:
+        x.append(str(i))
+print(','.join(x))
+
+
+# CW 75 Napisz program, który utworzy histogram - rozkład częstości w postaci 
+#       słownika z podanych wartości: items = ['x', 'y', 'z', 'y', 'x', 'y', 
+#       'y', 'z', 'x'] wynik: {'x': 3, 'y': 4, 'z': 2}
+# %% 
+
+items = ['x', 'y', 'z', 'y', 'x', 'y', 'y', 'z', 'x']
+new = {}
+for i in items:
+    if i not in new.keys():
+        new[i] = 1
+    else:
+        new[i] += 1 
+ print(new)
+
+
+# CW 76 Podany jest poniższy tekst. Utwórz listę słów z podanego tekstu. 
+#       Następnie dokonaj standaryzacji (zamień duże litery na małe, usuń znaki
+#       interpunkcyjne). Wydobądź tylko wyrazy z długością powyżej 10 znaków.
+#       wynik:['programowania', 'przeznaczenia', 'rozbudowanym', 'standardowych']
+#%%
+
+text = """Python – język programowania wysokiego poziomu
+ogólnego przeznaczenia, o rozbudowanym pakiecie bibliotek
+standardowych, którego ideą przewodnią jest czytelność i
+klarowność kodu źródłowego."""
+
+text1 = text.split()
+text1 = [word.lower() for word in text1]
+text1 = [word.replace('.','').replace(',','') for word in text1]
+text1 = [word for word in text1 if len(word)>10]
+
+
+# CW 77 Podana jest lista  = [0.21, 0.91, 0.34, 0.55, 0.76, 0.02]. 
+#       Przypisz 0 dla wartości mniejszych niż 0.5 oraz 1 dla wartości większych 
+#       lub równych 0.5. 
+#%%
+
+lista = [0.21, 0.91, 0.34, 0.55, 0.76, 0.02]
+new = []
+for i in lista:
+    if i < 0.5:
+        i = 0
+    else:
+        i = 1
+    new.append(i)
+print(new)
 
 
