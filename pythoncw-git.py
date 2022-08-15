@@ -852,4 +852,29 @@ for i in lista:
     new.append(i)
 print(new)
 
+# CW 78 Napisz program, który porówna dwie listy i zwróci wartość True w 
+#       przypadku gdy listy będą zawierały co najmniej jeden ten sam element.
+#       W przeciwnym razie zwróci wartość False. Użyj instrukcji break.
+# %%
 
+list1 = [1, 2, 0]
+list2 = [4, 5, 6, 1]
+x = False
+for item in list1:
+    if item in list2:
+        x = True
+        break
+print(x)
+
+# CW 79 sprawdz czy podane hasło ma min 10 znaków, zawiera ! ( break ) 
+
+ps = 'jnhvsoics!vd'
+if len(ps) > 10:
+    for i in ps:
+        if '!' in ps:
+            print('Hasło poprawne')
+            break
+    else:
+        print('Hasło niepoprawne')
+else:
+    print('Hasło niepoprawne')
