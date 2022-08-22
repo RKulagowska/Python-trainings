@@ -878,3 +878,149 @@ if len(ps) > 10:
         print('Hasło niepoprawne')
 else:
     print('Hasło niepoprawne')
+  
+  
+# CW 80 Zapytaj o imię. Sprawdź za pomocą funkcji while czy imię jest pow 3 
+#       liter . Wydrukuj : Hej + imię 
+#%%   
+    
+while True:
+    name = input('Podaj imie: ')
+    if len(name) >= 3 and name.isalpha():
+        break
+print('Hej {}'.format(name))
+
+
+# CW 81 Za pomocą while przeszukaj listę i zwróć jej elementy 
+#%%   
+
+lista_do_przeszukania = [12, 53, 13, 63, 34]
+flaga = False
+
+idx = 0 
+while idx < len(lista_do_przeszukania):
+    print(lista_do_przeszukania[idx])
+    idx += 1
+    
+    
+# CW 82 Za pomocą while sprawdź czy zawiera 13. Jełi tak wydrukuj znaleziono
+#%%
+
+numbers = [23, 12, 53, 13, 65, 1, 45]
+x = 13
+idx = 0 
+while idx < len(numbers):
+    if numbers[idx] == x :
+        flaga = True 
+        break
+    idx += 1
+if flaga:
+     print('Znaleziono')
+
+
+# CW 83 Popros o podanie kodu Pin i sprawdż czy podano poprawny tj '0000' Jesli
+#       tak poinformuj że zalogowano
+#%%        
+
+KOD_PIN = '0000'
+
+pin = input('Podaj kod pin: ')
+while pin != KOD_PIN:
+    pin = input('sprobuj jeszcze raz: ')
+print('Zalogowany')
+
+
+# CW 84 Popros o podanie kodu Pin i sprawdż czy podano poprawny tj '0000' Jesli
+#       tak poinformuj że zalogowano. Powtórz jesli zły kod i wyrzuć po 3 próbach
+#%%   
+
+KOD_PIN = '0000'
+pin = ''
+counter = 0 
+
+while pin != KOD_PIN and counter < 3:
+    pin = input('Podaj kod pin: ')
+    if pin == KOD_PIN:
+        print('zalogowany')
+        break
+    counter += 1 
+else:
+    print('Zbyt dużo prób')
+
+
+# CW 85 # z podanej listy wyprintuj wszystkie oprócz 99 
+# %%
+
+lista = [1, 2, 99, 4, 5]
+for i in lista:
+    if i == 99:
+        continue
+    print(i)
+    
+    
+# CW 86 Za pomocą continue zastąp # ' ' i wudrukuj 
+#%% 
+
+hashtags = '#summer#holiday#free'
+result = ''
+for char in hashtags:
+    if char == '#':
+        print(result)
+        result = ''
+        continue
+    result = result+ char
+print(result) 
+
+
+# CW 87 Podana jest lista spółek z indeksu WIG.GAMES wraz z ceną zamknięcia i 
+#       walutą. Używając instrukcji continue zbuduj pętlę, która zmieni cenę 
+#       zamknięcia wyrażoną w USD na PLN. Przyjmij kurs USDPLN = 4.0.
+#       Słownik gaming wydrukuj do konsoli.
+#%%
+
+gaming = {
+    '11B': [362.5, 'PLN'],
+    'CDR': [74.25, 'USD'],
+    'CIG': [0.85, 'PLN'],
+    'PLW': [79.5, 'USD'],
+    'TEN': [300.0, 'PLN']
+}
+
+for ticker, info in gaming.items():
+    if info[1] =='PLN':
+        continue
+    info[0] = info[0]* 4.0
+    info[1] = 'PLN'
+print(gaming)
+
+
+# CW 88 Podana jest lista imion (jednego brak):
+#        names = ['Jack', 'Leon', 'Alice', None, 'Bob']. Lista składa się tylko
+#        z obiektów typu str lub wartości None. Posługując się instrukcją
+#        continue wydrukuj  imiona (obiekty typu str).
+#%%
+
+names = ['Jack', 'Leon', 'Alice', None, 'Bob']
+
+for name in names:
+    if not isinstance(name, str):
+        continue 
+    print(name)
+    
+    
+# CW 89 Sprawdz, czy podana liczba jest liczbą pierwszą:
+#       number = 13. Jeśli jest pierwsza wydrukuj do konsoli 
+#       '13 - liczba pierwsza'. W rozwiązaniu użyj instrukcji break.
+#%%
+
+number = 13
+
+if number >1:
+    for i in range(2,number):
+        if number % i == 0:
+            print(f'{number} - nie jest pierwsza')
+            break
+    else:
+        print(f'{number} - liczba pierwsza')
+else:
+    print(f'{number} - nie jest pierwsza')
