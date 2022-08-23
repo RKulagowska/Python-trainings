@@ -1024,3 +1024,186 @@ if number >1:
         print(f'{number} - liczba pierwsza')
 else:
     print(f'{number} - nie jest pierwsza')
+  
+      
+# CW 90 Napisz program, który wydrukuje do konsoli 10 pierwszych liczb 
+#        pierwszych rozdzielonych przecinkiem. W rozwiązaniu użyj pętli while 
+#        oraz instrukcji break.Oczekiwany wynik:2,3,5,7,11,13,17,19,23,29
+#%%
+
+counter = 0
+number = 2
+wynik = []
+
+while counter < 10:
+    for i in range(2,number):
+        if number % i == 0 :
+            break
+    else:
+        wynik.append(str(number))
+        counter +=1
+    number += 1
+print(','.join(wynik))
+
+
+# CW 91 Wykorzystując pętlę while policz ile trzeba czekać lat, aby zwrot z
+#       ponizej opisanej inwestycji co najmniej się podwoił (pod uwagę bierzemy
+#       tylko pełne okresy).Oznaczenia:
+#       n - liczba okresów (w latach)
+#       pv - present value - wartość obecna
+#      r - stopa procentowa (roczna)
+#       fv - future value - wartość przyszła
+#       Opis inwestycji: pv = 1000 , r= 0.04
+#       Oczekiwany wynik: Wartość przyszła: 2025.82 PLN. Liczba okresów: 18 lat
+# %%
+
+n = 1
+pv = 1000
+r = 0.04
+fv = pv*(1+r)
+
+while fv <= 2*pv:
+    fv = fv*(1+r)
+    n += 1
+print(f'Wartość przyszła: {fv:.2f} PLN. Liczba okresów: {n} lat')    
+    
+
+# CW 92 Użyj algorytmu stochastycznego spadku wzdłuż gradientu do znalezienia
+#       minimum funkcji straty określonej wzorem: L(w) = w^2- 4w. 
+#       Pochodna tej gunkcji to 2 * w - 4. Przybliżona
+#       zasada działania algorytmu:1. Zaczynamy od punktu startowego należącego
+#       do dziedziny funkcji, weźmy:w_0 = -1
+#       2. Określamy z góry maksymalną liczbę iteracji: max_iters = 10000 
+#       3. Określamy zmienną, która pomoże nam kontrolować rozmiar kroku w
+#       kierunku minimum, ustalmy jej wartość na 1: previous_step_size = 1
+#       4. Określamy wskaźnik uczenia: learning_rate = 0.01
+#       5. Określamy precyzję jaka wystarczy do znalezienia minimum:
+#       precision = 0.000001
+#       6. Definiujemy pochodną jako funkcję: derivative = lambda w: 2 * w - 4
+#       Aby znaleźć minimum funkcji L należy poruszać się wzdłuż kierunku 
+#       przeciwnego do kierunku wyznaczanego przez gradient funkcji L aktualizując 
+#       wartość w_0 następująco: w_0 = w_0 - learning_rate * derivative(w_prev)
+#       gdzie w_prev jest punktem z poprzedniej iteracji. Dla pierwszego korku 
+#       jest to po prostu w_0. Zbuduj pętlę while, która pozwoli zatrzymać 
+#       działanie algorytmu w momencie, gdy minimum zostanie odnalezione z 
+#       zakładaną przez nas wartością precyzji lub gdy przekroczymy maksymalną 
+#       liczbę iteracji.Oczekiwany wynik: Minimum lokalne w punkcie: 2.00
+# %% 
+
+max_iters = 10000 
+iters = 0
+w_0 = -1
+previous_step_size = 1
+learning_rate = 0.01
+precision = 0.000001
+derivative = lambda w: 2 * w - 4
+
+while previous_step_size > precision and iters < max_iters:
+    w_prev = w_0
+    w_0 = w_prev - learning_rate * derivative(w_prev)
+    previous_step_size = abs(w_0 - w_prev)
+    iters += 1
+ 
+print(f'Minimum lokalne w punkcie: {w_0:.2f}')
+
+
+# CW 93 Napisz program, który sprawdzi czy podany element (target) znajduje 
+#       się w posortowanej liście (numbers). Podane są:
+#       numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9], target = 7
+#       Zasada działania algorytmu:
+#       1. Ustalamy indeks startowy (start) oraz końcowy (end) oraz flagę 
+#       flag = None.
+#       2. Dopóki indeks startowy jest nie większy niż indeks końcowy wybieramy
+#       środkowy indeks (mid) listy (średnia arytmetyczna indeksu startowego i 
+#       końcowego -> należy pamiętać o skonwertowaniu wyniku funkcją int). 
+#       Jeżeli indeks startowy jest większy niż indeks końcowy kończymy 
+#       działanie algorytmu.
+#       3.  Sprawdzamy czy element listy dla tak obliczonego indeksu jest 
+#       naszym szukanym (target). Jeżeli tak, ustawiamy flagę flag na wartość 
+#       True  i kończymy działanie algorytmu. Jeżeli nie -> krok 4.
+#       4. Sprawdzamy, czy wartość elementu listy dla indeksu mid jest mniejsza
+#       niż target. Jeśli tak, to zwiększamy indeks startowy o 1. Jeśli nie, 
+#       zmniejszamy indeks końcowy o 1 i przechodzimy do kroku 2.
+#       Po wykonaniu pętli while w zależności od wartości flagi flag wydrukuj 
+#       tekst: 'Znaleziono', 'Nie znaleziono'.
+#%%
+
+numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+target = 7
+start = 0
+end = len(numbers) - 1
+flag = None
+
+while start <= end:
+  mid = int((start + end) / 2)
+  if numbers[mid] == target:
+        flag = True
+        break
+  else:
+        if numbers[mid] < target:
+            start = mid + 1
+        else:
+            end = mid - 1
+ 
+if flag:
+    print('Znaleziono')
+else:
+    print('Nie znaleziono')
+
+    
+# CW 94 Podane są zmienne: suma = 3000, counter = 0
+#       Chcemy podzielić zmienną suma przez zmienną counter. W czasie działania 
+#       pewnego programu zmienna counter może się zmieniać i przyjmować różne 
+#       wartości.Używając klauzuli try... except... obsłuż wyjątek dzielenia 
+#       przez zero. Jeżeli dzielenie zostanie wykonane poprawnie wynik wydrukuj
+#       do konsoli. W momencie błędu do konsoli niech zostanie wydrukowany 
+#       tekst:'Dzielenie przez zero.'
+#%%
+
+suma = 3000
+counter = 0
+
+try:
+    result= suma/counter
+    print(result)
+except ZeroDivisionError:
+    print('Dzielenie przez zero. ')
+    
+    
+# CW 95 Czasem potrzebujemy otworzyć plik o pewnej nazwie nie wiedząc czy taki
+#       plik istnieje. Zbuduj klauzulę try... except... obsługującą ten problem.
+#       Fragment kodu do odczytania zawartości pliku:
+#       with open('file.txt', 'r') as file:
+#       content = file.read()
+#       Jeżeli podany plik file.txt nie istnieje wydrukuj do konsoli: 
+#       Nie znaleziono pliku.
+#%%
+
+try:
+    with open('file.txt','r') as file:
+        content = file.read()
+except FileNotFoundError:
+    print('Nie znaleziono pliku.')
+    
+    
+# CW 96 Podany jest poniższy słownik: users = {'001': 'Marek', '002': 'Monika',
+#        '003': 'Jakub'}. Spróbuj wydrukować wartość dla klucza:user_id = '004'
+#       W przypadku błędu KeyError wydrukuj do konsoli tekst:
+#       Klucz 004 nie występuje w słowniku. Dodawanie klucza...
+#       Następnie dodaj ten klucz do słownika z wartością None i wydrukuj 
+#       słownik users do konsoli. 
+#       Oczekiwany wynik: Klucz 004 nie występuje w słowniku. Dodawanie klucza...
+#       {'001': 'Marek', '002': 'Monika', '003': 'Jakub', '004': None}
+#%%
+
+users = {'001': 'Marek', '002': 'Monika', '003': 'Jakub'}
+user_id = '004'
+
+try: 
+    print(users[user_id])
+except KeyError:
+    print(f'Klucz {user_id} nie występuje w słowniku. '
+        'Dodawanie klucza...')
+    users[user_id]= None
+print(users)
+  
