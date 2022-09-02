@@ -1365,4 +1365,72 @@ max_date = list(filter(lambda val: val[1] == max_vol, data))[0][0]
 print(f'Data : {max_date}')
 
 
-  
+# CW 102Podane są dwie listy: headers = ['user_id', 'amount']
+#       users = [['001', '1400'], ['004', '1300'], ['007', '900']]
+#       Zapisz powyższe dane do pliku users.csv (plik w formacie csv - 
+#       comma-separated values)
+#%%
+
+headers = ['user_id', 'amount']
+users = [['001', '1400'], ['004', '1300'], ['007', '900']]
+
+with open('users.csv', 'w') as file:
+    file.write(','.join(headers) + '\n')
+    for user in users:
+        file.write(','.join(user) + '\n')
+        
+      
+# CW 103 Podana jest zmienna x = -1.5 oraz podane jest następujące wrażenie:
+#       expression = 'x**2 + x'. Używając odpowiedniej funkcji policz wartość 
+#       tego wyrażenia. Wskazówka: Użyj funkcji eval().
+# %%
+
+x = -1.5
+expression = 'x**2 + x'
+print(eval(expression))
+
+
+# CW 104 Podane są zmienne: var1 = 'Python', var2 = ('Python'), 
+#       var3 = ('Python',), var4 = ['Python'], var5 = {'Python'}
+#       Używając odpowiedniej funkcji, sprawdź czy podane zmienne przechowują 
+#       obiekty typu tuple (krotki). Dla każdej zmiennej wynik wydrukuj 
+#       w osobnej linii.
+#       Użyj funkcji wbudowanej isinstance().
+#%%
+
+var1 = 'Python'
+var2 = ('Python')
+var3 = ('Python',)
+var4 = ['Python']
+var5 = {'Python'}
+
+print(isinstance(var1, tuple))
+print(isinstance(var2, tuple))
+print(isinstance(var3, tuple))
+print(isinstance(var4, tuple))
+print(isinstance(var5, tuple))
+
+# CW 105 Podana jest poniższa lista:characters = ['k', 'b', 'c', 'j', 'z', 'w']
+#       Wykorzystując funkcje wbudowane zwróć pierwszą i ostatnią literę 
+#       ułożonych w kolejności alfabetycznej liter z listy characters. 
+#%%
+
+characters = ['k', 'b', 'c', 'j', 'z', 'w']
+x = min(characters)
+y = max(characters)
+print(f'Pierwsza: {x}')
+print(f'Ostatnia: {y}')
+
+# CW 106 Podane są dwa obiekty typu tuple: ticker = ('TEN', 'PLW', 'CDR')
+#       full_name = ('Ten Square Games', 'Playway', 'CD Projekt')
+#       Używając odpowiednich funkcji wbudowanych utwórz listę składającą się 
+#       z obiektów typu tuple (ticker, full_name).Oczekiwany wynik:
+#      [('TEN', 'Ten Square Games'), ('PLW', 'Playway'), ('CDR', 'CD Projekt')]
+#       Wskazówka: Użyj funkcji zip().
+#%%
+
+ticker = ('TEN', 'PLW', 'CDR')
+full_name = ('Ten Square Games', 'Playway', 'CD Projekt')
+
+x = zip(ticker, full_name)
+print(list(x))
