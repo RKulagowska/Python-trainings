@@ -1434,3 +1434,194 @@ full_name = ('Ten Square Games', 'Playway', 'CD Projekt')
 
 x = zip(ticker, full_name)
 print(list(x))
+
+
+# CW 107 Używając odpowiedniej funkcji wbudowanej sprawdź, czy wszystkie 
+#       elementy poniższego obiektu tuple zwracają wartość logiczną True:
+#       items = (' ', '0', 0.1, True)
+#%%
+
+items = (' ', '0', 0.1, True)
+print(bool([items]))
+print(all(items))
+
+
+# CW 108 Używając odpowiedniej funkcji wbudowanej sprawdź, czy jakikolwiek 
+#       element poniższego obiektu tuple zwracają wartość logiczną True:
+#%%
+
+items = ('', 0.0, 0, False)
+print(any(items))
+
+
+# CW 109 Zlicz liczbę jedynek w binarnej reprezentacji liczby number:
+#       number = 234 . Wskazówka: Użyj funkcji wbudowanej bin().
+#%%
+
+x = bin(number)
+x = x[2:]
+print(x.count('1'))
+
+
+# CW 110 Zdefiniuj funkcję o nazwie maximum(), która zwróci maksimum z dwóch 
+#       liczb. Użyj instrukcji warunkowej. 
+#%%
+
+def maximum(x,y):
+    if x > y:
+        return x
+    else:
+        return y
+    
+    
+# CW 111 Zdefiniuj funkcję o nazwie maximum(), która zwróci maksimum z trzech  
+#       liczb. Użyj instrukcji warunkowej. 
+#%%
+
+def maximum(x,y,z):
+    if x > y and x > z:
+        return x
+    if y > x and y > z:
+        return y
+    else:
+        return z
+    
+maximum(140,20,400)
+
+
+# CW 112 Zdefiniuj funkcję o nazwie multi(), która jako parametr przyjmie 
+#       obiekt iterowalny (lista, tupla) oraz zwróci iloczyn wszystkich 
+#       elementów listy.
+#%%
+
+def multi(numbers):
+    x = 1
+    for number in numbers:
+        x *= number
+    return x
+
+   
+# CW 113 Napisz funkcję o nazwie map_longest(), która przyjmie listę słów i 
+#       zwróci długość najdłuższego słowa.
+#%%
+
+def map_longest(x):
+    a = []
+    for word in x:
+        a.append(len(word))
+    return max(a)
+map_longest(('sied','jedenasty','dwa'))
+        
+ 
+# CW 114 Napisz funkcję o nazwie filter_ge_6(), która przyjmie listę słów i 
+#       zwróci słowa o długości większej lub równej 6 znaków.      
+#%%   
+def filter_ge_6(x):
+    a = []
+    for word in x:      
+        if len(word) >= 6:
+            a.append(word)
+    return a
+filter_ge_6(['jedenacie','dwa','sssssssssssssss'])
+
+
+# CW 115 Napisz funkcję o nazwie factorial(), która obliczy wartość silni z 
+#       danej liczby.
+#%%
+
+def factorial(n):
+    if n == 0:
+        return 1 
+    return n * factorial(n-1)
+
+factorial(4)
+
+
+# CW 116 Napisz funkcję count_str(), która zwróci liczbę obiektów typu str w
+#       obiekcie iterowalnym (list, tuple, set).
+#%%
+
+def count_str(items):
+    total = 0
+    for item in items:
+        if isinstance(item, str):
+            total += 1
+    return total
+
+count_str({'p', 2, 4.3, True, 'True', None})        
+  
+
+# CW 117 Napisz funkcję count_str(), która zwróci liczbę obiektów typu str o 
+#       długości powyżej 2 znaków w obiekcie iterowalnym (lista, tuple, set).       
+#%%
+
+def count_str(dane):
+    total = 0 
+    for item in dane:
+        if isinstance(item, str) and len(item)>2:
+            total +=1
+    return total
+
+count_str([1, 2, 3, 'python'])
+
+
+# CW 118 Napisz funkcję remove_duplicates(), która usunie duplikaty z listy 
+#       (kolejność elementów nie musi być zachowana).
+#%%
+
+def remove_duplicates(lista):
+    return list(set(lista))
+
+remove_duplicates([1, 5, 3, 2, 2, 4, 2, 4])
+
+
+# CW 119 Napisz funkcję is_distinct(), która sprawdzi, czy lista zawiera 
+#       unikalne wartości.
+
+def is_distinct(x):
+    return len(x)==len(set(x))
+
+is_distinct([1, 2, 3, 3])     
+
+
+# CW 120 Zdefiniowana jest funkcja function().Wywołaj funkcję function() 
+#       trzykrotnie w następujący sposób:
+#       function(3)
+#       function(5, ['a', 'b', 'c'])
+#       function(6)
+#%%
+
+def function(idx, l=[]):
+    for i in range(idx):
+        l.append(i ** 3)
+    print(l)
+
+function(3)
+function(5, ['a', 'b', 'c'])
+# oblicza cyfry przepisuje niecyfrowe
+function(6)
+
+
+# CW 121 Podana jest funkcja function(). Wywołaj funkcję function() w podanej
+#        kolejności:
+#%%
+
+def function(*args, **kwargs):
+    print(args, kwargs)
+    
+function(1, 2, x=3, y=4)
+
+
+# CW 122 Zdefiniuj funkcję is_palindrome(), która za argument przyjmie obiekt 
+#       typu str i sprawdzi czy podany string jest palindromem (wyrażenie 
+#       brzmiące tak samo czytane od lewej do prawej i od prawej do lewej).
+#       Jeżeli tak, funkcja ma zwracać wartość logiczną True, przeciwnie False.
+#%%
+
+def is_palindrome(string):
+    inverse = string[::-1]
+    if string == inverse:
+        return True
+    else:
+        return False
+is_palindrome('kajaki') 
