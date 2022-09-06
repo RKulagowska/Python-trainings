@@ -1625,3 +1625,162 @@ def is_palindrome(string):
     else:
         return False
 is_palindrome('kajaki') 
+
+
+# CW 123 Podana jest lista słów: stocks = ['playway', 'boombit', 'cd projekt']
+#       Używając funkcji map() oraz wyrażenia lambda przekształć podaną listę 
+#       w listę zawierającą długości poszczególnych słów. 
+#%%
+
+stocks = ['playway', 'boombit', 'cd projekt']
+x = list(map(lambda stock: len(stock), stocks))
+print(x)
+
+##
+stocks = ['playway', 'boombit', 'cd projekt']
+def new(stocks): 
+    return list(map(lambda x: len(x), stocks))
+
+ 
+# CW 124 Podana jest lista za pomocą map() podwój wartoć każdego elementu 
+#%% 
+
+numbers = [7, 4, 9, 6, 8, 1]
+def new(items):
+    x = []
+    for val in items:
+        x.append(val * 2)
+    return x
+result = new(numbers)
+print(result)
+
+#%%
+numbers = [7, 4, 9, 6, 8, 1]
+def new(items):
+    return list(map(lambda x: x*2, items))
+result = new(numbers)
+print(numbers)
+
+#%%
+numbers = [7, 4, 9, 6, 8, 1]
+def new (items):
+    return items * 2
+
+result = list(map(new,numbers))
+print(result)
+
+
+# CW 125 Napisz funkcję sort_list(), która uporządkuje listę składającą się z 
+#       dwuelementowych obiektów typu tuple według drugiego elementu tupli.
+#%%
+
+def sort_list(items):
+    return sorted(items, key = lambda item: item[1])
+x =([(1, 3), (4, 1), (4, 2), (0, 7)])
+y = sort_list(x)
+print(y)
+
+#%%
+x =([(1, 3), (4, 1), (4, 2), (0, 7)])
+x.sort(key=lambda x:x[1])
+print(x)
+
+
+# CW 126 Podana jest lista, używajac map() i lambda uzyskaj 3 pierwsze litery 
+#        każdego miasta 
+#%%
+city = ['Warsaw', 'London', 'Berlin', 'New York']
+print(list(map(lambda word: word[:3], city)))
+
+
+# CW 127 Poniżej zdefiniowana jest funkcja func_1(). Wykorzystując wyrażenie 
+#       lambda zdefiniuj analogiczną funkcję i przypisz ją do zmiennej func_2().
+#%%
+
+def func_1(x, y):
+    return x + y + 2
+func_2 = lambda x,y: x + y + 2 
+print(func_2(2,3))
+
+
+# CW 128 Podana jest lista items. Posortuj listę według rosnącej sumy kwadratów 
+#       liczb podanych w obiektach typu tuple. Użyj metody list.sort() oraz
+#       wyrażenia lambda.
+#%%
+
+items = [(3, 4), (2, 5), (1, 4), (6, 1)]
+items.sort(key = lambda x: x[0]**2 + x[1]**2)
+print(items)
+
+
+# CW 129 Posortuj podaną listę słowników po kluczu price:
+#%%
+
+stocks = [
+    {'indeks': 'mWIG40', 'name': 'TEN', 'price': 304},
+    {'indeks': 'mWIG40', 'name': 'PLW', 'price': 309},
+    {'indeks': 'sWIG80', 'name': 'BBT', 'price': 22}
+]
+stocks.sort(key = lambda x: x['price'])
+print(stocks)
+
+
+# CW 130 Podana jest poniższa lista. Z listy stocks wyciągnij spółki z indeksu 
+#       'mWIG40' w postaci listy i wynik wydrukuj do konsoli.
+#%%
+
+stocks = [
+    {'indeks': 'mWIG40', 'name': 'TEN', 'price': 304},
+    {'indeks': 'mWIG40', 'name': 'PLW', 'price': 309},
+    {'indeks': 'sWIG80', 'name': 'BBT', 'price': 22}
+]
+def index(x):
+    result= []
+    for ind in x:
+        if ind['indeks'] == 'mWIG40':
+            result.append(ind)
+    return result
+print(index(stocks))
+
+#%%
+stocks = [
+    {'indeks': 'mWIG40', 'name': 'TEN', 'price': 304},
+    {'indeks': 'mWIG40', 'name': 'PLW', 'price': 309},
+    {'indeks': 'sWIG80', 'name': 'BBT', 'price': 22}
+]
+x = list(filter(lambda x: x['indeks'] == 'mWIG40', stocks))   
+print(x)
+
+
+# CW 131 Przekształć podaną listę na listę wartości logicznych (True, False).
+#       True w przypadku, gdy spółka należy do indeksu 'mWIG40', False 
+#       przeciwnie. Przekształconą listę wydrukuj do konsoli.Skorzystaj z map()
+#%% 
+
+stocks = [
+    {'indeks': 'mWIG40', 'name': 'TEN', 'price': 304},
+    {'indeks': 'mWIG40', 'name': 'PLW', 'price': 309},
+    {'indeks': 'sWIG80', 'name': 'BBT', 'price': 22}
+]
+print(list(map(lambda x: x['indeks'] == 'mWIG40', stocks)))
+
+
+# CW 132 Podana jest poniższa lista.Wykorzystując funkcję map() oraz wyrażenie 
+#       lambda przekształć podaną listę w taki sposób, aby pozbyć się z każdego
+#       elementu znaku '-' (myślnik). Wynik wydrukuj do konsoli.
+#%%
+
+items = ['P-1', 'R-2', 'D-4', 'F-6']
+print(list(map(lambda x: x.replace('-',''),items)))
+
+
+# CW 133 Podane są dwie listy. Listy są tej samej długości. Wykorzystując 
+#       funkcję map() oraz wyrażenie lambda przekształć podane listy w jedną 
+#       zawierającą resztę z dzielenia elementu pierwszej listy przez 
+#       odpowiedni element drugiej listy.
+#%%
+
+num1 = [4, 2, 6, 2, 11]
+num2 = [5, 2, 3, 3, 9]
+print(list(map(lambda x,y: x % y, num1,num2)))
+
