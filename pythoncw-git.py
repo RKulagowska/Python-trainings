@@ -1784,3 +1784,178 @@ num1 = [4, 2, 6, 2, 11]
 num2 = [5, 2, 3, 3, 9]
 print(list(map(lambda x,y: x % y, num1,num2)))
 
+
+# CW 134 Zbuduj generator o nazwie file_gen(), który z otrzymanej listy z 
+#       nazwami plików, wybierze tylko te z rozszerzeniem .txt.
+#%%
+
+fnames = ['data1.txt', 'data2.txt', 'data3.txt', 'view.jpg']
+def file_gen(txt):
+    for item in txt:
+        if item.endswith('.txt'):
+            yield item
+x= file_gen(fnames)
+
+#%%        
+next(x)
+
+
+# CW 135 Zaimplementuj generator o nazwie enum(), który działa podobnie jak 
+#       funkcja wbudowana enumerate().Dla uproszczenia generator ma pobierać 
+#       obiekt iterowalny i zwracać obiekt typu tuple (indeks, element)
+#%%
+
+def enum(nowy):
+    idx = 0
+    for item in nowy:
+        yield (idx,item)
+        idx +=1
+        
+nowy = ['1','2','3']
+x = enum(nowy)
+#%%
+next(x)
+
+# CW 136 Zbuduj generator o nazwie dayname(), który przyjmie indeks elementu 
+#       poniższej listy i pozwoli iterować po 3 dniach (dzień wcześniejszy, 
+#       dzień obecny, dzień następny).
+#%%
+
+def dayname(index):
+    days = ['pon', 'wt', 'śr', 'czw', 'pt', 'sb', 'nd']
+    yield days[index - 1]
+    yield days[index]
+    yield days[(index + 1) % 7]
+
+# CW 137 Rozważmy dwukrotny rzut kostką. Zbuduj przestrzeń zdarzeń 
+#       elementarnych omega, następnie policz prawdopodobieństwo uzyskania sumy
+#       oczek wyższej niż 10. W rozwiązaniu wykorzystaj zbiór składany (set 
+#       comprehension).
+#%%
+result1 = [1,2,3,4,5,6]
+result2 = [1,2,3,4,5,6]
+
+total = []
+
+for x in result1:
+    for y in result2:
+        total.append(x+y)
+
+x2= []
+for item in total:
+   if item > 10:
+        x2.append(item)
+        
+x3= len(x2)/len(total)
+    
+print(x3)
+
+#%%
+result1 = [1,2,3,4,5,6]
+result2 = [1,2,3,4,5,6]
+
+total = [x+y for x in result1 for y in result2 ]
+wynik = [item for item in total if item >10]
+
+print(f'P-stwo: {len(wynik)/len(total):.2f}')
+
+#%%
+omega = {(i, j) for i in range(1, 7) for j in range(1, 7)}
+sum_gt_10 = {pair for pair in omega if pair[0] + pair[1] > 10}
+print(f'P-stwo: {len(sum_gt_10) / len(omega):.2f}')
+
+
+# CW 138 Podany jest następujący opis spółki Playway. Zamień wszystkie znaki na
+#       małe, usuń dwukropek oraz kropkę i następnie podziel otrzymany tekst na
+#       słowa. Z tak otrzymanej listy utwórz zbiór unikalnych słów. 
+#       Wydrukuj długość otrzymanego zbioru do konsoli.
+#%%
+
+desc = "Playway: Playway to producent gier komputerowych."
+
+desc = desc.lower().replace(':','').replace('.','').split()
+print(len(set(desc)))
+
+#%%
+desc = "Playway: Playway to producent gier komputerowych."
+word_list = desc.lower().replace(':', '').replace('.', '').split()
+word_unique = {word for word in word_list}
+print(len(word_unique))
+
+
+# CW 139 Rozważmy dwukrotny rzut kostką. Zbuduj przestrzeń zdarzeń 
+#       elementarnych omega, następnie policz prawdopodobieństwo uzyskania 
+#       sumy kwadratów oczek wyższej lub równej 45. W rozwiązaniu wykorzystaj 
+#       zbiór składany (set comprehension). Wynik zaokrąglij do 2 miejsca.
+#%%
+
+result1 = [1,2,3,4,5,6]
+result2 = [1,2,3,4,5,6]
+
+total = []
+for x in result1:
+    for y in result2:
+        total.append(x**2 + y**2)
+
+x2= []
+for item in total:
+   if item >= 45:
+        x2.append(item)
+        
+x3 = len(x2)/len(total)
+    
+print(f'P-stwo: {x3:.2f}')
+
+# %%
+result1 = [1,2,3,4,5,6]
+result2 = [1,2,3,4,5,6]
+total = [x**2 + y**2 for x in result1 for y in result2]
+wynik = [item for item in total if item >=45]
+
+print(f'P-stwo: {len(wynik)/len(total):.2f}')
+
+#%%
+omega = {(x, y) for x in range(1, 7) for y in range(1, 7)}
+a = {(x, y) for x, y in omega if x**2 + y**2 >= 45}
+prob = round(len(a) / len(omega), 2)
+print(f'P-stwo: {prob}')
+
+# CW 140 Rozważmy trzykrotny rzut kostką. Zbuduj przestrzeń zdarzeń 
+#       elementarnych omega. Następnie policz prawdopodobieństwo uzyskania 
+#       trójki cyfr, której suma jest podzielna przez 7. W rozwiązaniu 
+#       wykorzystaj zbiór składany (set comprehension). Wynik zaokrąglij do 
+#       drugiego miejsca po przecinku.
+#%%
+
+total = {(x,y,z) for x in range(1,7) for y in range(1,7) for z in range(1,7)}
+x = {(x,y,z) for x,y,z in total if (x+y+z) % 7 == 0}
+prob = round(len(x) / len(total), 2)
+print(f'P-stwo: {prob}')
+
+# CW 141 Oblicz prawdopodobieństwo tego, że w trzech rzutach symetryczną 
+#       sześcienną kostką do gry suma kwadratów uzyskanych oczek będzie 
+#       podzielna przez 3. W rozwiązaniu wykorzystaj zbiór składany (set 
+#       comprehension). Wynik zaokrąglij do czwartego miejsca po przecinku.
+#%%
+
+total = {(x,y,z) for x in range(1,7)for y in range(1,7)for z in range(1,7)}
+x = {(x,y,z) for x,y,z in total if (x**2 + y**2 + z**2)%3==0 }
+prob = round(len(x)/len(total),4)
+print(f'P-stwo: {prob}')
+
+# CW 142 Rzucamy trzykrotnie symetryczną kostką sześcienną do gry. Oblicz 
+        prawdopodobieństwo zdarzenia, że w każdym rzucie wypadnie nieparzysta 
+        liczba oczek. W rozwiązaniu wykorzystaj zbiór składany (set 
+        comprehension). Wynik zaokrąglij do trzeciego miejsca po przecinku.
+# %%
+
+total = {(x,y,z) for x in range(1,7)for y in range(1,7)for z in range(1,7)}
+x = {(x,y,z) for x,y,z in total if x%2==1 and y%2 ==1 and z%2 ==1 }
+prob = round(len(x)/len(total),4)
+print(f'P-stwo: {prob}')
+
+
+# CW 143 Wydrukuj liczby od 0 30 30 podzilene przez 4 
+
+x = [ i for i in range(30) if i % 4 == 0]
+print(x)
