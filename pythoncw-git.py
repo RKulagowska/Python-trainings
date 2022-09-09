@@ -1944,9 +1944,9 @@ prob = round(len(x)/len(total),4)
 print(f'P-stwo: {prob}')
 
 # CW 142 Rzucamy trzykrotnie symetryczną kostką sześcienną do gry. Oblicz 
-        prawdopodobieństwo zdarzenia, że w każdym rzucie wypadnie nieparzysta 
-        liczba oczek. W rozwiązaniu wykorzystaj zbiór składany (set 
-        comprehension). Wynik zaokrąglij do trzeciego miejsca po przecinku.
+#        prawdopodobieństwo zdarzenia, że w każdym rzucie wypadnie nieparzysta 
+#       liczba oczek. W rozwiązaniu wykorzystaj zbiór składany (set 
+#       comprehension). Wynik zaokrąglij do trzeciego miejsca po przecinku.
 # %%
 
 total = {(x,y,z) for x in range(1,7)for y in range(1,7)for z in range(1,7)}
@@ -1959,3 +1959,183 @@ print(f'P-stwo: {prob}')
 
 x = [ i for i in range(30) if i % 4 == 0]
 print(x)
+
+
+# CW 144 Podany jest plik x. Odczytano zawartość tego pliku (zmienna 
+#       text). Usuń wszystkie znaki nowej linii następnie usuń linie, które nie
+#       zawierają żadnego znaku. Tak przygotowany tekst wydrukuj do konsoli.
+#       W rozwiązaniu wykorzystaj listy składane (list comprehension).
+#%%
+
+x = ['PLAYWAY\n',
+ '\n',
+ 'PlayWay to producent i wydawca gier komputerowych i mobilnych. Spółka charakteryzuje się bardzo dużą liczbą zespołów deweloperskich i dużą liczbą gier wytwarzanych jednocześnie.\n',
+ 'PlayWay prowadzi sprzedaż m. in. za pośrednictwem portalu STEAM, AppStore oraz GooglePlay. Rynki USA i Niemiec to dwa największe rynki sprzedaży Grupy.\n',
+ 'Dodatkowo, spółka posiada PlayWay Campus - kampus dla współpracujących zespołów programistów.\n',
+ '\n',
+ '11BIT\n',
+ '\n',
+ '11 bit studios to warszawski deweloper gier sprzedawanych na całym świecie. Oferta produktowa studia obejmuje gry wideo na wszystkie rodzaje platform sprzętowych skierowane do szerokiego grona odbiorców.\n',
+ 'Sprzedaż i dystrybucja produktów jest prowadzona drogą elektroniczną za pośrednictwem specyficznych dla każdej platformy elektronicznych kanałów.\n',
+ 'Wraz z Game Delivery Network spółka prowadzi również własny sklep internetowy Games Republic. W ramach 11 bit launchpad spółka zajmuje się także wydawaniem gier zewnętrznych deweloperów, zarówno na konsole jak i platformy mobilne.\n',
+ '\n',
+ 'CDPROJEKT\n',
+ '\n',
+ 'Grupa Kapitałowa CD Projekt zajmuje się dystrybucją gier wideo i filmów, produkcją własnych gier wideo oraz cyfrową dystrybucją gier do klientów.\n',
+ 'W skład grupy wchodzą studio deweloperskie CD Projekt RED zajmujące się tworzeniem gier wideo, sklep internetowy CDP.pl oraz cyfrowa platforma GOG oferująca cyfrową dystrybucję gier. \n',
+ 'Poza rynkiem krajowym, spółka działa także na rynkach amerykańskim i zachodnioeuropejskim.']
+
+x = [line.replace('\n','') for line in x]
+x= [line for line in x if len(line)>0]
+print(x)
+
+
+# CW 145 Podana jest lista cen produktów netto. Podatek VAT na te produkty 
+#       wynosi 23%. Policz cenę brutto dla każdego produktu. Cenę zaokrąglij do
+#       2 miejsca po przecinku. użyj (list comprehension).
+# %%
+
+tax = 0.23
+net_price = [5.5, 4.0, 9.0, 10.0]
+price = [round(price*(1+tax),2) for price in net_price]
+print(price)
+
+
+# CW 146 Podana jest kwota początkowa inwestycji pv = 1000 PLN (pv - present 
+#       value) oraz okres inwestycji n = 10. W zależności od podanych poniżej 
+#       stóp procentowych policz wartość przyszłą inwestycji fv (future value). 
+#       Wartość przyszłą zaokrąglij do pełnych groszy.
+#%%
+
+pv = 1000
+n = 10
+rate = [0.01, 0.02, 0.03, 0.04, 0.05, 0.06, 0.07]
+fvs = [round(pv * (1 + r)**n, 2) for r in rate]
+print(fvs)
+
+
+# CW 147 Dana jest kwota początkowa inwestycji pv = 1000 PLN (pv - present 
+#       value) oraz okres inwestycji n = 10. W zależności od podanych poniżej
+#       stóp procentowych policz wartość odsetek z inwestycji. Wartość odsetek 
+#       zaokrąglij do pełnych groszy
+#%%
+
+pv = 1000
+n = 10
+rate = [0.01, 0.02, 0.03, 0.04, 0.05, 0.06, 0.07]
+fvs = [pv*(1+r)**n for r in rate]
+x = [round(fv-pv,2)for fv in fvs] 
+print(x)
+
+
+# CW 148 Wczytano zawartość pliku plw.txt.Pozbądź się pustych linii.
+#        Dokonaj podziału każdej linii na tokeny/wyrazy względem spacji.
+#%%
+
+line = ['PLAYWAY',
+ '',
+ 'PlayWay to producent i wydawca gier komputerowych i mobilnych. Spółka charakteryzuje się bardzo dużą liczbą zespołów deweloperskich i dużą liczbą gier wytwarzanych jednocześnie.',
+ 'PlayWay prowadzi sprzedaż m. in. za pośrednictwem portalu STEAM, AppStore oraz GooglePlay. Rynki USA i Niemiec to dwa największe rynki sprzedaży Grupy.',
+ 'Dodatkowo, spółka posiada PlayWay Campus - kampus dla współpracujących zespołów programistów.']
+    
+line = [word for word in line if len(word)>0]
+line = [word.split() for word in line]
+print(line)
+
+
+# CW 149 Dany plik x. Zamień duże litery na małe. Usuń przecinki oraz kropki.
+#       Podziel tekst na tokeny/wyrazy względem spacji.Pozostaw tylko wyrazy 
+#       mające minimum 8 znaków. Posortuj wyrazy alfabetycznie.
+#%%
+
+text = 'PLAYWAY\n\nPlayWay to producent i wydawca gier komputerowych i mobilnych. Spółka charakteryzuje się bardzo dużą liczbą zespołów deweloperskich i dużą liczbą gier wytwarzanych jednocześnie.\nPlayWay prowadzi sprzedaż m. in. za pośrednictwem portalu STEAM, AppStore oraz GooglePlay. Rynki USA i Niemiec to dwa największe rynki sprzedaży Grupy.\nDodatkowo, spółka posiada PlayWay Campus - kampus dla współpracujących zespołów programistów.'
+
+text= text.lower().replace(',','').replace('.','').split()
+text = [word for word in text if len(word)>7]
+text.sort()
+
+print(text)
+
+
+# CW 150 Podany jest poniższy słownik.Przekształć podany słownik w listę.
+#       [['a', 1], ['b', 2], ['c', 3], ['d', 4], ['e', 5], ['f', 6]] i przypisz 
+#       do zmiennej result.
+#%%
+
+data = dict(zip(('a', 'b', 'c', 'd', 'e', 'f'),(1, 2, 3, 4, 5, 6)))
+
+result = [[key,value] for key,value in data.items()]   
+print(data)
+
+
+# CW 151 Wykorzystując słowniki składane (dict comprehension) utwórz słownik,
+#       który zmapuje liczby od 1 do 7 na ich kwadraty. Wydrukuj do konsoli.
+#%%
+result = {key:key**2 for key in range(1,8)}
+print(result)
+
+
+# CW 152 Podany jest lista. Wykorzystując dict comprehension zbuduj słownik, 
+#       który zmapuje nazwy spółek na liczbę znaków w jej nazwie. Utworzony
+#       słownik wydrukuj do konsoli.
+#%%
+
+stocks = ['Playway', 'CD Projekt', 'Boombit']
+
+x = {key:len(key) for key in stocks}
+print(x)
+
+
+# CW 153 Podany jest poniższy słownik. Używając dict comprehension przestaw 
+#       wartości słownika z kluczami. Tak przekształcony słownik wydrukuj.
+#%%
+
+stocks = {'Boombit': '001', 'CD Projekt': '002', 'Playway': '003'}
+
+x = {value: key for key,value in stocks.items()} 
+print(x)
+
+
+# CW 154 Podany jest poniższy słownik. Wykorzystując dict comprehension 
+#       wydobądź ze słownika pary key: value o wartości powyżej 100. Tak 
+#       otrzymany słownik wydrukuj do konsoli.
+#%%
+
+stocks = {'Boombit': 22, 'CD Projekt': 295, 'Playway': 350}
+
+x = {key:value for key,value in stocks.items() if value > 100}
+print(x)
+
+
+# CW 155 Zbuduj listę składającą się ze słowników mapujących kolejne cyfry od 1
+#        do 9 włącznie na ich odpowiednie k-te potęgi, dla k = 1, 2, 3.
+#%%
+
+data = [{key:key**key1 for key in range(1,10)}for key1 in range(1,4)]
+print(data)
+
+
+# CW 156 Podana jest poniższa lista indeksów oraz lista właściwości dla każdego
+#        indeksu. Wykorzystując dict comprehension zbuduj poniższy słownik.
+# {'WIG20': {'kapitalizacja': None, 'liczba spółek': None, 'spółki': None},
+# 'mWIG40': {'kapitalizacja': None, 'liczba spółek': None, 'spółki': None},
+# 'sWIG80': {'kapitalizacja': None, 'liczba spółek': None, 'spółki': None}}
+# %%
+
+indeks = ['WIG20', 'mWIG40', 'sWIG80']
+properties = ['liczba spółek', 'spółki', 'kapitalizacja']
+
+x = {idx:{i: None for i in properties} for idx in indeks}
+print(x)
+
+
+# CW 157 Podana jest lista.Wykorzystując discy comprehension przekształć indeks
+#       w słownik. 
+#%%
+
+indeks = ['WIG20', 'mWIG40', 'sWIG80']
+
+x = {key:value for key,value in enumerate(indeks)}
+print(x)
+
+
