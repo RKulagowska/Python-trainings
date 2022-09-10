@@ -2139,3 +2139,88 @@ x = {key:value for key,value in enumerate(indeks)}
 print(x)
 
 
+# CW 158 Wykorzystując moduł wbudowany calendar wydrukuj do konsoli kalendarz 
+        dla roku 2022.
+#%%
+
+import calendar
+print(calendar.calendar(2022))
+
+
+# CW 159 Wykorzystując moduł wbudowany calendar wydrukuj do konsoli kalendarz 
+        dla czerwca 2020.
+#%%
+
+import calendar
+print(calendar.month(2020, 6))
+
+
+# CW 160 Wykorzystując moduł wbudowany datetime policz różnicę dat (data 2 - 
+#        data 1): data 1: 2020-06-01, data 2: 2020-07-18
+#       Otrzymany wynik wydrukuj do konsoli.
+# %%
+
+from datetime import date
+
+date1 = date(2020,6,1)
+date2 = date(2020,7,18)
+diff = date2 - date1
+print(diff)
+
+
+# CW 161 Używając modułu wbudowanego re do wyrażeń regularnych znajdź wszystkie 
+#        cyfry w podanym tekście. Otrzymany wynik w postaci listy wydrukuj. 
+#        Wskazówka: Użyj funkcji re.findall() oraz wyrażenia regularnego '\d'.       
+#%%
+
+import re
+string = 'Python 3.8'
+result = re.findall(pattern=r"\d", string=string)
+print(result)
+
+
+# CW 162 Używając modułu wbudowanego re do wyrażeń regularnych znajdź wszystkie
+#        znaki alfanumeryczne w podanym tekście. Wskazówka: Użyj funkcji 
+#        re.findall() oraz wyrażenia regularnego '\w'.
+#%%
+
+import re
+string = '!@#$%^&45wc'
+
+x= re.findall(pattern=r"\w", string=string)
+print(x)
+
+
+# CW 163 Używając modułu wbudowanego re do wyrażeń regularnych znajdź wszystkie
+#        adresy email w podanym tekście.Otrzymane adresy email w postaci listy 
+#        wydrukuj do konsoli.
+#        Wskazówka: Użyj funkcji re.findall() oraz wyrażenia regularnego 
+#        '[\w\.-]+@[\w\.-]+'.
+#%%
+
+import re
+raw_text = "Wyślij email na adres: info@template.com lub sales-info@template.it"
+x= re.findall(r"[\w\.-]+@[\w\.-]+", raw_text)
+print(x)
+
+# CW 164 Używając modułu wbudowanego re do wyrażeń regularnych podziel poniższy
+#        tekst względem białych znaków (spacji). Wskazówka: Użyj funkcji
+#        re.split() oraz wyrażenia regularnego '\s+'
+#%%
+
+import re
+text = 'Programowanie w języku Python - od A do Z'
+x= re.split(pattern=r'\s+', string= text)
+print(x)
+
+# CW 165 Używając modułu wbudowanego string wydrukuj do konsoli ciąg znaków 
+#       małych i dużych liter tak jak pokazano poniżej.
+#       'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+#%%
+
+import string
+print(string.ascii_letters)
+
+
+
+
