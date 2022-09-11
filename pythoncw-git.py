@@ -2222,5 +2222,174 @@ import string
 print(string.ascii_letters)
 
 
+# CW 166 Wykorzystując pakiet wbudowany collections utwórz obiekt klasy 
+#        Counter, który zliczy częstość występowania elementów w poniższej 
+#        liście items. 
+#%%
+
+from collections import Counter
+items = ['YES', 'NO', 'NO', 'YES', 'EMPTY', 'YES', 'NO']
+
+print(Counter(items))
+
+
+# CW 167 Wykorzystując moduł wbudowany math zaimplementuj funkcję o nazwie 
+#       sigmoid()
+#%%
+
+import math
+def sigmoid(x):
+    return 1 / (1 + math.exp(-x))
+
+ 
+# CW 168 Wykorzystując moduł wbudowany random ustaw ziarno losowe w następujący
+#       sposób: random.seed(12). Następnie wybierz losowo (pseudolosowo) 
+#       element z podanej listy Wylosowany element wydrukuj do konsoli.
+#%%
+
+import random
+random.seed(12)
+items = ['python', 'java', 'sql', 'c++', 'c']
+x = random.choice(items)
+print(x)
+
+
+# CW 169 Wykorzystując moduł wbudowany random ustaw ziarno losowe w następujący
+#       sposób: random.seed(15). Następnie wybierz losowo (pseudolosowo) 
+#       element z podanej listy Wylosowany element wydrukuj do konsoli.
+#%%
+
+import random
+random.seed(15)
+items = ['python', 'java', 'sql', 'c++', 'c']
+random.shuffle(items)
+print(items)
+
+
+# CW 170 Wykorzystując moduł wbudowany pickle zapisz poniższą listę ids do 
+#       pliku data.pickle
+#%%
+
+import pickle
+ids = ['001', '003', '011']
+
+with open('data.pickle', 'wb') as file:
+    pickle.dump(ids, file)
+
+  
+# CW 171 Podany jest poniższy słownik. Wykorzystując pakiet wbudowany json 
+        zrzuć słownik stocks do stringu sortując po kluczach oraz stosując 
+        wcięcie 4. Otrzymany string wydrukuj do konsoli.
+#%%
+
+import json
+stocks = {'PLW': 360.0, 'TEN': 320.0, 'CDR': 329.0}
+result = json.dumps(stocks, sort_keys=True, indent=4)
+print(result)
+
+
+# CW 172 Rozważmy problem klasyfikacji binarnej uczenia maszynowego. Mamy daną 
+#       listę y_true klas ze zbioru testowego oraz listę y_pred klas 
+#       przewidzianych przez model. Naszym zadaniem jest zbudowanie funkcji o 
+#       nazwie accuracy(), która przyjmie dwa argumenty y_true oraz y_pred i
+#       policzy dokładność naszego modelu. Innymi słowy budujemy funkcję, 
+#       która zwróci wskaźnik wartości prawidłowo przewidzianych przez model.
+#       Wynik zaokrąglij do 4 miejsca po przecinku.Wywołaj funkcję na podanych 
+#       danych (listach). 
+#%%
+
+y_true = [0, 0, 1, 1, 0, 1, 0]
+y_pred = [0, 0, 1, 0, 0, 1, 0]
+
+def accuracy(y_true, y_pred):
+    x = 0 
+    for i,j in zip(y_true, y_pred):
+        if i == j:
+            x +=1
+    return round(x/len(y_true), 4)
+print(accuracy(y_true, y_pred))
+        
+ 
+# CW 173 MAE - Mean Absolute Error jest funkcją, która pozwala sprawdzić 
+#       dokładność modelu uczenia maszynowego. MAE jest popularna w modelach
+#       regresyjnych. Zaimplementuj funkcję o nazwie mae(). Wynik zaokrąglij do
+#       trzeciego miejsca po przecinku.
+#%%
+
+y_true = [10, 10.5, 11.2, 10.4]
+y_pred = [10.2, 10.4, 10.8, 11.0]
+
+def mae(y_true,y_pred):
+    errors= [abs(i[1]-i[0]) for i in zip(y_true, y_pred)]
+    return round(sum(errors)/len(y_true),3)
+
+print(mae(y_true, y_pred))
+
+
+# CW 174 MSE - Mean Squared Error jest funkcją, która pozwala sprawdzić 
+#       dokładność modelu uczenia maszynowego. MSE jest popularna w modelach 
+#       regresyjnych.Zaimplementuj funkcję o nazwie mse(). Wynik zaokrąglij do 
+#       trzeciego miejsca po przecinku.
+#%%
+
+y_true = [10, 10.5, 11.2, 10.4]
+y_pred = [10.2, 10.4, 10.8, 11.0]
+
+def mse(y_true,y_pred):
+    errors = sum([(i[1]- i[0])**2 for i in zip(y_true, y_pred)])
+    return round(errors/len(y_true),3)
+print(mse(y_true,y_pred))
+
+
+# CW 175 Zaimplementuj funkcję o nazwie relu(). ReLU - Rectified Linear Unit. 
+#       Funkcja ta ma zastosowanie w sieciach neuronowych.
+#%%
+
+def relu(x):
+    return max(0,x)
+
+ 
+# CW 176 Podana jest poniższa lista. Napisz funkcję o nazwie flatten(), która 
+#       za argument przyjmie tak określoną listę i ją wypłaszczy, tzn. 
+#       przedstawi w następującej postaci: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+#%%
+
+items = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+]
+
+def flatten(items):
+    x = []
+    for item in items:
+        x.extend(item)
+    return x
+
+print(flatten(items))
+
+
+# CW 177 Napisz funkcję o nazwie transfer_zeros(), która przyjmie za argument 
+#       listę oraz zwróci tę listę zawierającą wszystkie zera na końcu.
+#       [IN]: transfer_zeros([3, 4, 0, 2, 0, 5, 1, 6, 2])
+#       [OUT]: [3, 4, 2, 5, 1, 6, 2, 0, 0]  
+#%%
+
+items = [3, 4, 0, 2, 0, 5, 1, 6, 2]
+
+def transfer_zeros(items):
+    result = []
+    counter = 0 
+    for item in items:
+        if item == 0:
+            counter +=1
+        else:
+            result.append(item)
+    result.extend([0]*counter)
+    return result
+
+print(transfer_zeros(items))
+
+
 
 
