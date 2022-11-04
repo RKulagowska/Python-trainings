@@ -42,3 +42,37 @@ from itertools import groupby
 
 string= '1223344556666777777'
 print(' '.join( str( (len(list(g)), int(k)) ) for k,g in groupby(string)))
+
+# You are given three integers x,y and z representing the dimensions of a cuboid 
+# along with an integer n. Print a list of all possible coordinates given by 
+# (i,j,k) on a 3D grid where the sum of i+j+k is not equal to n.
+
+x = 1
+y = 1
+z = 1
+n = 2
+ 
+res= [[i,j,k] for i in range(x+1) for j in range(y+1) for k in range(z+1) if i+j+k !=n]
+print(res)
+
+print([[i,j,k] for i in range(x+1) for j in range(y+1) for k in range(z+1) if i+j+k !=n])
+
+
+# Given the participants' score sheet for your University Sports Day, you are 
+# required to find the runner-up score. You are given n scores. Store them 
+# in a list and find the score of the runner-up (2 place).
+#%
+n = 5
+scores =[2,3,6,6,5] 
+new = sorted(set(scores))
+print(new[-2])
+
+print(sorted(set(scores))[-2])
+
+# You are given a string. Split the string on a " " (space) delimiter and join 
+# using a - hyphen.
+
+a = "this is a string"
+x= a.replace(' ','-')
+print(x)
+
